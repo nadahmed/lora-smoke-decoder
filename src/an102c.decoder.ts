@@ -22,9 +22,9 @@ export class AN102CDecoder extends Decoder {
 	}
 
 	public readonly isBatteryLow = () => {
-		const bl: number | undefined = this._getBatteryLevel();
-		if (!!bl) {
-			return bl < 20;
+		const bs = this._getAlarm();
+		if (!!bs) {
+			return bs.isLowBattery;
 		}
 	};
 
