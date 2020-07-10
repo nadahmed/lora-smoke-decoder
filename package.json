@@ -1,0 +1,41 @@
+{
+  "name": "lora-smoke-alarm-decoder",
+  "version": "1.0.0",
+  "description": "Smoke detector Lorawan jdsd51 decoder.",
+  "main": "index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json --verbose",
+    "build": "tsc",
+    "tes": "npm run build && node lib/main.js"
+  },
+  "keywords": [
+    "lorawan",
+    "winext",
+    "AN-102C",
+    "jd-sd51",
+    "smoke",
+    "detector",
+    "iot"
+  ],
+  "author": "Noor Al Din Ahmed <nooraldinahmed@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/lodash": "^4.14.157",
+    "@types/node": "^14.0.19",
+    "lodash": "^4.17.19"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "jest": "^26.1.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.1",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.9.6"
+  }
+}
