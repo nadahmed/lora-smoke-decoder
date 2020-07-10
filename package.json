@@ -1,17 +1,18 @@
 {
-  "name": "lora-smoke-alarm-decoder",
-  "version": "1.0.0",
-  "description": "Smoke detector Lorawan jdsd51 decoder.",
+  "name": "lora-smoke-decoder",
+  "version": "0.0.1",
+  "description": "Lorawan Smoke detector decoder.",
   "main": "index.js",
   "files": [
-    "lib/**/*"
+    "./lib/**/*"
   ],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "test": "jest --config ./jestconfig.json --verbose --watch",
+    "test": "jest --config ./jestconfig.json --verbose",
     "build": "tsc",
-    "tes": "npm run build && node lib/main.js"
+    "prepublish": "npm test"
+    
   },
   "keywords": [
     "lorawan",
@@ -37,5 +38,16 @@
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.6"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadahmed/lora-smoke-decoder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nadahmed/lora-smoke-decoder/issues"
+  },
+  "homepage": "https://github.com/nadahmed/lora-smoke-decoder#readme"
 }
