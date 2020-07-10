@@ -1,0 +1,21 @@
+import { AutoDecodeError } from './../autoDecoder.error';
+import { JDSD51Decoder } from './../jdsd51.decoder';
+import { AN102CDecoder } from './../an102c.decoder';
+import { AutoDecoder } from './../autoDecoder';
+
+
+test('Check AutoDetector instance of AN102', () => {
+    expect(new AutoDecoder('AQEADC4AZAAAAB0=').alarm).toBeInstanceOf(AN102CDecoder);
+    expect(new AutoDecoder('AQEADC4AZAAAAB0=').alarm).not.toBeInstanceOf(JDSD51Decoder);
+});
+
+test('Check AutoDetector instance of JDSD51', () => {
+    expect(new AutoDecoder('AgAB').alarm).toBeInstanceOf(JDSD51Decoder);
+    expect(new AutoDecoder('AgAB').alarm).not.toBeInstanceOf(AN102CDecoder);
+});
+
+test('Check AutoDetector to have error for no match', () => {
+    expect(() => {
+        return new AutoDecoder('AgAAAB').alarm
+    }).toThrowError(AutoDecodeError);
+});
