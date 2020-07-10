@@ -1,8 +1,6 @@
-import { AutoDecodeError } from './../autoDecoder.error';
-import { JDSD51Decoder } from './../jdsd51.decoder';
-import { AN102CDecoder } from './../an102c.decoder';
-import { AutoDecoder } from './../autoDecoder';
-
+import { AutoDecoder } from '../lora-smoke-decoder';
+import { JDSD51Decoder, AN102CDecoder } from '../lora-smoke-decoder/decoders';
+import { AutoDecodeError } from '../lora-smoke-decoder/errors';
 
 test('Check AutoDetector instance of AN102', () => {
     expect(new AutoDecoder('AQEADC4AZAAAAB0=').alarm).toBeInstanceOf(AN102CDecoder);

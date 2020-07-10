@@ -1,6 +1,6 @@
-import { JDSD51Status } from '../decoder.interface';
-import { JDSD51Decoder } from '../jdsd51.decoder';
-import { JDSD51DecodeError } from '../jdsd51.error';
+import { JDSD51Status } from '../lora-smoke-decoder/interfaces';
+import { JDSD51Decoder,  } from '../lora-smoke-decoder/decoders';
+import { JDSD51DecodeError} from '../lora-smoke-decoder/errors'
 import { randomBytes } from 'crypto';
 import { random } from 'lodash';
 

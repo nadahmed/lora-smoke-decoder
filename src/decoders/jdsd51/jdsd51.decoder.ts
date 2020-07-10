@@ -1,6 +1,6 @@
-import { Decoder } from './decoder.base';
+import { Decoder } from '../decoder.base';
 import { JDSD51DecodeError } from './jdsd51.error';
-import { JDSD51Status, ButtonStatus } from './decoder.interface';
+import { JDSD51Status, ButtonStatus } from '../decoder.interface';
 
 export class JDSD51Decoder extends Decoder {
 	public status!: Partial<JDSD51Status>;

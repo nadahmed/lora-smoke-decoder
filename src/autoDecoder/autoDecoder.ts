@@ -1,6 +1,6 @@
 import { AutoDecodeError } from './autoDecoder.error';
-import { AN102CDecoder } from './an102c.decoder';
-import { JDSD51Decoder } from './jdsd51.decoder';
+import { AN102CDecoder } from '../decoders/an102c/an102c.decoder';
+import { JDSD51Decoder } from '../decoders/jdsd51/jdsd51.decoder';
 import * as _ from 'lodash';
 
 export class AutoDecoder {

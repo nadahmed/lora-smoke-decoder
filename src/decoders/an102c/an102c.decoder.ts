@@ -1,6 +1,6 @@
-import { Decoder } from './decoder.base';
+import { Decoder } from '../decoder.base';
 import { AN102CDecodeError } from './an102c.error';
-import { AN102Status } from './decoder.interface';
+import { AN102Status } from '../decoder.interface';
 
 export class AN102CDecoder extends Decoder {
 	public status!: Partial<AN102Status>;
