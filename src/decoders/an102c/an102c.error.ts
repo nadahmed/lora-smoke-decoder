@@ -1,4 +1,6 @@
-export class AN102CDecodeError extends Error {
+import { DecoderError } from '../decoder.baseError';
+
+export class AN102CDecodeError extends DecoderError {
 	constructor(message?: string) {
 		super(message);
 		this.name = 'AN102CDecodeError';

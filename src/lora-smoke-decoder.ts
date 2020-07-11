@@ -1,1 +1,1 @@
-export * from './autoDecoder/autoDecoder'
+export * from './autoDecoder/autoDecoder';

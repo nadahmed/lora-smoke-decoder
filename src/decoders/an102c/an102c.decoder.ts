@@ -21,37 +21,37 @@ export class AN102CDecoder extends Decoder {
 		this.decode(this.byteArray);
 	}
 
-	public readonly isBatteryLow = () => {
+	public isBatteryLow() {
 		const bs = this._getAlarm();
 		if (!!bs) {
 			return bs.isLowBattery;
 		}
-	};
+	}
 
-	public readonly isButtonPressed = () => {
+	public isButtonPressed() {
 		return this.status.frame?.value === 0x02;
-	};
+	}
 
-	public readonly isSmokeDetected = () => {
+	public isSmokeDetected() {
 		const alm = this._getAlarm();
 		if (!!alm) {
 			return this._getAlarm()!.isSmoke;
 		}
-	};
+	}
 
-	public readonly isFaulty = () => {
+	public isFaulty() {
 		const fail = this._getFailures();
 		if (!!fail) {
 			return fail.isDevice || fail.isTempHumid || fail.isSelfChecking;
 		}
-	};
+	}
 
-	public readonly getAlarmType = () => {
+	public getAlarmType() {
 		return {
 			name: this.status.type!.name,
 			value: this.status.type!.value,
 		};
-	};
+	}
 
 	private decode(byteArray: ArrayBufferLike) {
 		const data = new DataView(byteArray);

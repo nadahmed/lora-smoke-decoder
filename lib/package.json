@@ -2,18 +2,7 @@
   "name": "lora-smoke-decoder",
   "version": "0.0.1",
   "description": "Lorawan Smoke detector decoder.",
-  "main": "lib/lora-smoke-decoder.js",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json",
-    "test": "jest --config ./jestconfig.json --verbose",
-    "build": "tsc",
-    "prepublish": "npm test"
-    
-  },
+  "main": "lora-smoke-decoder.js",
   "keywords": [
     "lorawan",
     "winext",
@@ -26,9 +15,7 @@
   "author": "Noor Al Din Ahmed <nooraldinahmed@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/lodash": "^4.14.157",
-    "@types/node": "^14.0.19",
-    "lodash": "^4.17.19"
+    "@types/node": "^14.0.19"
   },
   "devDependencies": {
     "@types/jest": "^26.0.4",
