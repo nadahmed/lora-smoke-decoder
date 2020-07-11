@@ -1,4 +1,4 @@
-import { AN102CDecoder } from '../lora-smoke-decoder/decoders';
+import { AN102CDecoder } from '../decoders';
 
 test('Check Battery Low function', () => {
 	expect(new AN102CDecoder('AQEADC4AZAAAAB0=').isBatteryLow()).toBe(false);
