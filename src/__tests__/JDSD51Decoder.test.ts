@@ -1,6 +1,6 @@
 import { JDSD51Status } from '../interfaces';
-import { JDSD51Decoder,  } from '../decoders';
-import { JDSD51DecodeError} from '../errors'
+import { JDSD51Decoder } from '../decoders';
+import { JDSD51DecodeError } from '../errors';
 import { randomBytes } from 'crypto';
 import { random } from 'lodash';
 
@@ -72,7 +72,7 @@ test('Error Check', () => {
 		const byteArray = randomBytes(random(2, 4, false));
 		const text = byteArray.toString('base64');
 		expect(() => {
-			new JDSD51Decoder(text).toBinaryString();
+			const check = new JDSD51Decoder(text);
 		}).toThrowError(JDSD51DecodeError);
 	}
 });

@@ -1,15 +1,15 @@
 import { JDSD51Status, AN102Status } from './decoder.interface';
 
-export abstract class Decoder {
+export abstract class Decoder implements DecoderBaseMethods {
 	public readonly base64Data: string;
 	public readonly byteArray: ArrayBufferLike;
 
-	constructor(base64Data: string) {
+	protected constructor(base64Data: string) {
 		this.base64Data = base64Data;
 		this.byteArray = this.base64decode(base64Data);
 	}
 
-	public base64decode(base64: string): ArrayBufferLike {
+	protected base64decode(base64: string): ArrayBufferLike {
 		const binaryString = Buffer.from(base64, 'base64').toString();
 		const len = binaryString.length;
 		const bytes = new Uint8Array(len);
@@ -19,7 +19,7 @@ export abstract class Decoder {
 		return bytes.buffer;
 	}
 
-	public toBinaryString() {
+	protected toBinaryString() {
 		const data = new DataView(this.byteArray);
 		let bstring = '';
 		for (let i = 0; i < this.byteArray.byteLength; i++) {
@@ -27,10 +27,24 @@ export abstract class Decoder {
 		}
 		return bstring;
 	}
-	public abstract readonly status: Partial<any>;
-	public abstract readonly getAlarmType: () => { name?: string; value?: number } | undefined;
-	public abstract readonly isSmokeDetected: () => boolean | undefined;
-	public abstract readonly isButtonPressed: () => boolean | undefined;
-	public abstract readonly isFaulty: () => boolean | undefined;
-	public abstract readonly isBatteryLow: () => boolean | undefined;
+
+	public abstract status: any;
+	public abstract getAlarmType(): { name?: string; value?: number } | undefined;
+	public abstract isSmokeDetected(): boolean | undefined;
+	public abstract isButtonPressed(): boolean | undefined;
+	public abstract isFaulty(): boolean | undefined;
+	public abstract isBatteryLow(): boolean | undefined;
+	// public abstract readonly getAlarmType: () => { name?: string; value?: number } | undefined;
+	// public abstract readonly isSmokeDetected: () => boolean | undefined;
+	// public abstract readonly isButtonPressed: () => boolean | undefined;
+	// public abstract readonly isFaulty: () => boolean | undefined;
+	// public abstract readonly isBatteryLow: () => boolean | undefined;
+}
+
+interface DecoderBaseMethods {
+	getAlarmType(): { name?: string; value?: number } | undefined;
+	isSmokeDetected(): boolean | undefined;
+	isButtonPressed(): boolean | undefined;
+	isFaulty(): boolean | undefined;
+	isBatteryLow(): boolean | undefined;
 }

@@ -1,24 +1,33 @@
-import { AutoDecodeError } from './autoDecoder.error';
-import { AN102CDecoder } from '../decoders/an102c/an102c.decoder';
-import { JDSD51Decoder } from '../decoders/jdsd51/jdsd51.decoder';
-import * as _ from 'lodash';
+import { DecoderError } from './../decoders/decoder.baseError';
+import { Decoder } from '../decoders/decoder.base';
+import * as handlers from './autodecoder.plugin';
 
-export class AutoDecoder {
-	public alarm!: JDSD51Decoder | AN102CDecoder | Error | undefined;
+export class AutoDecoder extends Decoder {
+	public alarm!: Decoder;
 
-	public name!: string;
+	public status: any = this.alarm?.status;
+
+	getAlarmType = () => this.alarm?.getAlarmType();
+	isBatteryLow = () => this.alarm?.isBatteryLow();
+	isButtonPressed = () => this.alarm?.isButtonPressed();
+	isFaulty = () => this.alarm?.isFaulty();
+	isSmokeDetected = () => this.alarm?.isSmokeDetected();
 
 	constructor(base64Data: string) {
-		const alarms = [_.attempt(() => new JDSD51Decoder(base64Data)), _.attempt(() => new AN102CDecoder(base64Data))];
+		super(base64Data);
 
-		this.alarm = alarms.find((err) => {
-			return !_.isError(err);
-		});
-
-		if (_.isUndefined(this.alarm)) {
-			throw new AutoDecodeError();
-		} else {
-			this.name = this.alarm.constructor.name;
+		for (const key in handlers) {
+			if (handlers.hasOwnProperty(key)) {
+				try {
+					this.alarm = new (handlers as { [key: string]: any })[key](base64Data);
+					return;
+				} catch (e) {
+					if (!(e instanceof DecoderError)) {
+						throw Error(e);
+					}
+				}
+			}
 		}
+		throw new DecoderError();
 	}
 }

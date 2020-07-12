@@ -1,1 +1,1 @@
-export * from "./decoders/decoder.interface";
+export * from './decoders/decoder.interface';

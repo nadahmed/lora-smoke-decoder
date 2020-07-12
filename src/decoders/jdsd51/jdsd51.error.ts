@@ -1,4 +1,6 @@
-export class JDSD51DecodeError extends Error {
+import { DecoderError } from '../decoder.baseError';
+
+export class JDSD51DecodeError extends DecoderError {
 	constructor(message?: string) {
 		super(message);
 		this.name = 'JDSD51DecodeError';

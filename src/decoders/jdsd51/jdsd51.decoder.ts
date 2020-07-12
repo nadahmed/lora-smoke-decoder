@@ -14,28 +14,28 @@ export class JDSD51Decoder extends Decoder {
 		this.decode(this.byteArray);
 	}
 
-	public readonly isBatteryLow = () => {
+	public isBatteryLow() {
 		return this._isLowBattery();
-	};
+	}
 
-	public readonly isButtonPressed = () => {
+	public isButtonPressed() {
 		return this._getButtonStatus() === ButtonStatus.Test || this._getButtonStatus() === ButtonStatus.Silenced;
-	};
+	}
 
-	public readonly isSmokeDetected = () => {
+	public isSmokeDetected() {
 		return this._isSmokeDetected();
-	};
+	}
 
-	public readonly isFaulty = () => {
+	public isFaulty() {
 		return this._isFaulty() || this._isTampered();
-	};
+	}
 
-	public readonly getAlarmType = () => {
+	public getAlarmType() {
 		return {
 			name: this.status.type!.name,
 			value: this.status.type!.value,
 		};
-	};
+	}
 
 	private _isSmokeDetected() {
 		if ((this.detectionTypeByte & 0xff) === 0x04) {
