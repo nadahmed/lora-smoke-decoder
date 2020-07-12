@@ -1,6 +1,6 @@
 import { DecoderError } from './../decoders/decoder.baseError';
 import { Decoder } from '../decoders/decoder.base';
-import * as handlers from './autodecoder.plugin';
+import * as handlers from './autoDecoder.adaptor';
 
 export class AutoDecoder extends Decoder {
 	public alarm!: Decoder;

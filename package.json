@@ -1,6 +1,6 @@
 {
-  "name": "lora-smoke-decoder1",
-  "version": "0.0.7",
+  "name": "lora-smoke-decoder",
+  "version": "0.0.1",
   "description": "Lorawan Smoke detector decoder.",
   "main": "lib/lora-smoke-decoder.js",
   "files": [
